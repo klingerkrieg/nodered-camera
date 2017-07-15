@@ -1,0 +1,80 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Cam NMAP Scanner',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            searchPorts: {value:""},
+            hosts : {value:""},
+            networksToNmap : {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "scanNmap.png",
+        label: function() {
+            return this.name||"Cam NMAP Scanner";
+        }
+    });
+</script>
+<script type="text/x-red" data-template-name="Cam NMAP Scanner">
+
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-searchPorts">Ports</label>
+        <input type="text" id="node-input-searchPorts" placeholder="80,8080,8081,4747">
+    </div>
+    <div class="form-tips"><b>Configure portas separadas por ","<br/>default:</b>80,8080,8081,4747</div>
+    <div class="form-row">
+        <label for="node-input-networksToNmap"></i> Networks</label>
+        <input type="text" id="node-input-networksToNmap"  placeholder="192.168.0.0/24 192.168.1.22">
+    </div>
+    <div class="form-tips">Caso necessário, configure uma ou mais networks para o nmap: 192.168.0.0/24<br/> Ou ip fixo separador por espaço 192.168.0.10 192.168.0.11</div>
+    <div class="form-row">
+        <label for="node-input-hosts"> Hosts</label>
+        <textarea id="node-input-hosts" style="width:70%;"></textarea>
+    </div>
+    <div class="form-tips"><b>Configure endereços de câmeras com path, exemplo:</b> http://192.168.0.2:80/video (Utilizado para dispositivos não compatíveis por padrão)</div>
+    <br/>
+    <div class="form-tips">
+        Aplicativos compatíveis:<br/>
+        <a target="_blank" href="https://play.google.com/store/apps/details?id=com.pas.webcam">
+            <img src="./icons/ipwebcam.png"> IP Webcam</a><br/>
+        <a target="_blank" href="https://play.google.com/store/apps/details?id=com.BenLin.BLIPCamera.Free">
+            <img src="./icons/blipcamera.png"> BL IP-Camera Free</a><br/>
+        <a target="_blank" href="https://play.google.com/store/apps/details?id=com.dev47apps.droidcam">
+            <img src="./icons/droidcam.png"> DroidCam Wireless Webcam</a> No record<br/>
+        <a target="_blank" href="https://play.google.com/store/apps/details?id=com.dipbox.eye">
+            <img src="./icons/phoneeye.png"> Phone eye - Web camera</a><br/>
+        <a target="_blank" href="https://play.google.com/store/apps/details?id=info.dvkr.screenstream">
+            <img src="./icons/screenstream.png"> Screen Stream over HTTP</a><br/>
+        <a target="_blank" href="https://play.google.com/store/apps/details?id=com.ipphonecamera">
+            <img src="./icons/iphonecamera.png"> IP Phone Camera</a><br/>
+        <a target="_blank" href="https://play.google.com/store/apps/details?id=com.miv.rtspcamera">
+            <img src="./icons/rtspcamera.png"> RTSP Camera Server</a> No record<br/>
+        <a target="_blank" href="https://play.google.com/store/apps/details?id=veg.mediacapture.sdk.test.server">
+            <img src="./icons/rtspserver.png"> VXG RTSP Server (IP camera)</a><br/>
+        <a target="_blank" href="https://dlink.com.br/produto/cameras-ip/dcs-932l">
+            DCS-932l</a><br/>
+            
+    </div>
+
+    Requer:
+    <ul>
+        <li><a target="_blank" href="https://nmap.org/download.html">Nmap</a></li>
+        <li>apt-get install nmap</li>
+
+        <li><a target="_blank" href="https://ffmpeg.org/download.html">FFMPEG</a></li>
+        <li>sudo add-apt-repository ppa:mc3man/trusty-media</li>
+        <li>sudo apt-get update</li>
+        <li>sudo apt-get install ffmpeg gstreamer0.10-ffmpeg </li>    
+    </ul>
+    </p>
+</script>
+
+
+<script type="text/x-red" data-help-name="camera">
+    <p>Nó para busca na rede via Nmap.<br/>
+</script>
