@@ -14,3 +14,4 @@ https://github.com/klingerkrieg/nodered-ratefile
 
 node-red node:
 node-red-contrib-fs
+node-red-node-aws
